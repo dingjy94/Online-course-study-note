@@ -31,3 +31,6 @@ switch(action.type) {
 ```
 #### Leaner Switch
 Extract the `case some case: do something`, `do something` part to a sepearte function.
+
+### Aync
+[redux-thunk](https://github.com/reduxjs/redux-thunk)
