@@ -34,3 +34,57 @@ Extract the `case some case: do something`, `do something` part to a sepearte fu
 
 ### Aync
 [redux-thunk](https://github.com/reduxjs/redux-thunk)
+
+Put that in action：
+
+```JavaScript
+
+export const setIngredient = (ingredients) => {
+  return {
+    ...
+  };
+};
+
+export const fetchIngredientsFailed = () => {
+  return {
+    ...
+  };
+};
+
+export const initIngredients = () => {
+  return dispatch => {
+    axios.get('https://reactburger-d37b5.firebaseio.com/ingredients.json')
+      .then(response => {
+        dispatch(setIngredient(response.data));
+      })
+      .catch(error => {
+        dispatch(fetchIngredientsFailed());
+      });
+  };
+};
+
+
+```
+
+### Combine Reducers
+
+```JavaScript
+import combineReducers from 'redux';
+const rootReducer = combineReducers({
+  burgerBuilder: burgerBuilderReducer,
+  order: orderReducer
+});
+```
+
+## Test
+Jest + Enzyme
+### What to Test
+- Don't test library
+- Don't test complex connections
+- test isolated units
+- test conditional outputs
+- what change 
+
+
+
+
